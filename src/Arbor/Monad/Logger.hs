@@ -9,6 +9,8 @@ module Arbor.Monad.Logger
   , logInfo'
   , logWarn'
   , logError'
+  , MonadLogger(..)
+  , LogLevel(..)
   ) where
 
 import Control.Monad.Logger (LogLevel (..), MonadLogger, ToLogStr)
