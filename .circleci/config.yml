@@ -97,12 +97,3 @@ workflows:
           requires:
             - lts-10
             - lts-12
-      - release:
-          requires:
-            - lts-12
-            - lts-11
-            - lts-10
-            - nightly
-          filters:
-            branches:
-              only: master
