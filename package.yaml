@@ -21,7 +21,10 @@ description:         Please see the README on GitHub at <https://github.com/pack
 
 dependencies:
 - base >= 4.7 && < 5
+- bytestring
+- fast-logger
 - monad-logger
+- text
 
 library:
   source-dirs: src
