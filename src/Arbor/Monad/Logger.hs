@@ -10,6 +10,7 @@ module Arbor.Monad.Logger
   , logInfo'
   , logWarn'
   , logError'
+  , pushLogMessage
   , MonadLogger(..)
   , LogLevel(..)
   ) where
