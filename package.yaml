@@ -2,9 +2,9 @@ name:                arbor-monad-logger
 version:             0.1.0.0
 github:              "packetloop/arbor-monad-logger"
 license:             BSD3
-author:              "John Ky"
-maintainer:          "newhoggy@gmail.com.com"
-copyright:           "2018 John Ky"
+author:              "Arbor Networks"
+maintainer:          "mayhem@arbor.net"
+copyright:           "2018 Arbor Networks"
 
 extra-source-files:
 - README.md
