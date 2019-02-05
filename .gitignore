@@ -76,3 +76,5 @@ __pycache*
 /.ghc.environment.*
 /dist
 /dist-newstyle
+/cabal.project.local
+
