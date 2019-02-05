@@ -11,6 +11,7 @@ license:        BSD-3-Clause
 license-file:   LICENSE
 build-type:     Simple
 synopsis:       Simple logging library
+category:       Logging
 extra-source-files:
     ChangeLog.md
     README.md
