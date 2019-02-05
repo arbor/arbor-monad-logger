@@ -31,10 +31,3 @@ workflows:
           filters:
             branches:
               only: master
-
-      - hackage/upload:
-          publish: true
-          requires:
-            - GitHub Release
-          username: ${HACKAGE_USER}
-          password: ${HACKAGE_PASS}
