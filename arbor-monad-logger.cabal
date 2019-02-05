@@ -1,0 +1,46 @@
+cabal-version:  2.2
+name:           arbor-monad-logger
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/packetloop/arbor-monad-logger#readme>
+homepage:       https://github.com/packetloop/arbor-monad-logger#readme
+bug-reports:    https://github.com/packetloop/arbor-monad-logger/issues
+author:         Arbor Networks
+maintainer:     mayhem@arbor.net
+copyright:      2018 Arbor Networks
+license:        BSD-3-Clause
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    ChangeLog.md
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/packetloop/arbor-monad-logger
+
+library
+  hs-source-dirs: src
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , fast-logger
+    , monad-logger
+    , text
+  exposed-modules:
+      Arbor.Monad.Logger
+  other-modules: Paths_arbor_monad_logger
+  default-language: Haskell2010
+
+test-suite arbor-monad-logger-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs: test
+  default-extensions: BangPatterns FlexibleContexts FlexibleInstances GeneralizedNewtypeDeriving MultiParamTypeClasses OverloadedStrings TupleSections
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      arbor-monad-logger
+    , base >=4.7 && <5
+    , hedgehog
+    , hspec
+    , hw-hspec-hedgehog
+  default-language: Haskell2010
