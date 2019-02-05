@@ -10,6 +10,7 @@ copyright:      2018 Arbor Networks
 license:        BSD-3-Clause
 license-file:   LICENSE
 build-type:     Simple
+synopsis:       Simple logging library
 extra-source-files:
     ChangeLog.md
     README.md
