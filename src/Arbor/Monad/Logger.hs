@@ -11,11 +11,17 @@ module Arbor.Monad.Logger
   , logWarn'
   , logError'
   , pushLogMessage
-  , MonadLogger(..)
+  , withStdOutTimedFastLogger
+  , runTimedLogT
+  , runTimedFastLoggerLoggingT
   , LogLevel(..)
+  , LoggingT(..)
+  , MonadLogger(..)
+  , TimedFastLogger(..)
   ) where
 
-import Control.Monad.Logger  hiding (logDebug, logError, logInfo, logWarn)
+import Control.Monad.IO.Class
+import Control.Monad.Logger   hiding (logDebug, logError, logInfo, logWarn)
 import System.Log.FastLogger
 
 import qualified Control.Monad.Logger  as L
@@ -120,3 +126,16 @@ defaultLogLevelStr level = case level of
 isDefaultLoc :: Loc -> Bool
 isDefaultLoc (Loc "<unknown>" "<unknown>" "<unknown>" (0,0) (0,0)) = True
 isDefaultLoc _                                                     = False
+
+withStdOutTimedFastLogger :: (TimedFastLogger -> IO a) -> IO a
+withStdOutTimedFastLogger f = do
+  tc <- newTimeCache "%Y-%m-%d %T"
+  withTimedFastLogger tc (LogStdout defaultBufSize) $ \logger -> f logger
+
+runTimedLogT :: MonadIO m => LogLevel -> TimedFastLogger -> LoggingT m a -> m a
+runTimedLogT logLevel logger =
+  runTimedFastLoggerLoggingT logger . filterLogger (\_ lvl -> lvl >= logLevel)
+
+-- | Run a block using a 'TimedFastLogger'.
+runTimedFastLoggerLoggingT :: TimedFastLogger -> LoggingT m a -> m a
+runTimedFastLoggerLoggingT tfl m = runLoggingT m $ \a b c d -> tfl (defaultTimedLogStr a b c d)
