@@ -15,6 +15,7 @@ module Arbor.Monad.Logger
   , runTimedLogT
   , runLogT
   , runTimedFastLoggerLoggingT
+  , Logger(..)
   , LogLevel(..)
   , LoggingT(..)
   , MonadLogger(..)
