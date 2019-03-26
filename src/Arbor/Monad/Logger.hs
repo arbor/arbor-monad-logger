@@ -13,6 +13,7 @@ module Arbor.Monad.Logger
   , pushLogMessage
   , withStdOutTimedFastLogger
   , runTimedLogT
+  , runLogT
   , runTimedFastLoggerLoggingT
   , LogLevel(..)
   , LoggingT(..)
@@ -20,8 +21,9 @@ module Arbor.Monad.Logger
   , TimedFastLogger(..)
   ) where
 
+import Arbor.Monad.Logger.Types (Logger (..))
 import Control.Monad.IO.Class
-import Control.Monad.Logger   hiding (logDebug, logError, logInfo, logWarn)
+import Control.Monad.Logger     hiding (logDebug, logError, logInfo, logWarn)
 import System.Log.FastLogger
 
 import qualified Control.Monad.Logger  as L
@@ -132,10 +134,13 @@ withStdOutTimedFastLogger f = do
   tc <- newTimeCache "%Y-%m-%d %T"
   withTimedFastLogger tc (LogStdout defaultBufSize) $ \logger -> f logger
 
+runLogT :: MonadIO m => Logger -> LoggingT m a -> m a
+runLogT (Logger lgr lvl) = runTimedLogT lvl lgr
+
 runTimedLogT :: MonadIO m => LogLevel -> TimedFastLogger -> LoggingT m a -> m a
 runTimedLogT logLevel logger =
   runTimedFastLoggerLoggingT logger . filterLogger (\_ lvl -> lvl >= logLevel)
 
 -- | Run a block using a 'TimedFastLogger'.
 runTimedFastLoggerLoggingT :: TimedFastLogger -> LoggingT m a -> m a
-runTimedFastLoggerLoggingT tfl m = runLoggingT m $ \a b c d -> tfl (defaultTimedLogStr a b c d)
+runTimedFastLoggerLoggingT tfl m = L.runLoggingT m $ \a b c d -> tfl (defaultTimedLogStr a b c d)
