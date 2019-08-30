@@ -42,7 +42,7 @@ library
           , monad-logger
           , optparse-applicative
           , text
-  hs-source-dirs:   src
+  hs-source-dirs:       src
   other-modules:
   exposed-modules:
       Arbor.Monad.Logger
@@ -54,19 +54,19 @@ test-suite arbor-monad-logger-test
           , hedgehog
           , hspec
           , hw-hspec-hedgehog
-  type:               exitcode-stdio-1.0
-  main-is:            Spec.hs
-  build-tools:        hspec-discover
-  hs-source-dirs:     test
-  default-extensions: BangPatterns FlexibleContexts FlexibleInstances GeneralizedNewtypeDeriving MultiParamTypeClasses OverloadedStrings TupleSections
-  ghc-options:        -threaded -rtsopts -with-rtsopts=-N
-  build-depends:      arbor-monad-logger
+  type:                 exitcode-stdio-1.0
+  main-is:              Spec.hs
+  build-tool-depends:   hspec-discover:hspec-discover
+  hs-source-dirs:       test
+  default-extensions:   BangPatterns FlexibleContexts FlexibleInstances GeneralizedNewtypeDeriving MultiParamTypeClasses OverloadedStrings TupleSections
+  ghc-options:          -threaded -rtsopts -with-rtsopts=-N
+  build-depends:        arbor-monad-logger
 
 executable arbor-monad-logger-example
   import:   base, common
           , mtl
-  main-is:            Main.hs
-  other-modules:      AppEnv
-  hs-source-dirs:     app
-  ghc-options:        -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -O2 -msse4.2 -rtsopts -threaded
-  build-depends:      arbor-monad-logger
+  main-is:              Main.hs
+  other-modules:        AppEnv
+  hs-source-dirs:       app
+  ghc-options:          -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -O2 -msse4.2 -rtsopts -threaded
+  build-depends:        arbor-monad-logger
