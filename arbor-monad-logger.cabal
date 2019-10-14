@@ -1,20 +1,21 @@
 cabal-version:  2.2
-name:           arbor-monad-logger
-version:        0.1.1.1
-description:    Please see the README on GitHub at <https://github.com/packetloop/arbor-monad-logger#readme>
-homepage:       https://github.com/packetloop/arbor-monad-logger#readme
-bug-reports:    https://github.com/packetloop/arbor-monad-logger/issues
-author:         Arbor Networks
-maintainer:     mayhem@arbor.net
-copyright:      2018-2019 Arbor Networks
-license:        MIT
-license-file:   LICENSE
-build-type:     Simple
-synopsis:       Simple logging library
-category:       Logging
-extra-source-files:
-    ChangeLog.md
-    README.md
+
+name:                   arbor-monad-logger
+version:                0.1.1.1
+description:            Please see the README on GitHub at <https://github.com/packetloop/arbor-monad-logger#readme>
+homepage:               https://github.com/packetloop/arbor-monad-logger#readme
+bug-reports:            https://github.com/packetloop/arbor-monad-logger/issues
+author:                 Arbor Networks
+maintainer:             mayhem@arbor.net
+copyright:              2018-2019 Arbor Networks
+license:                MIT
+license-file:           LICENSE
+tested-with:            GHC == 8.8.1, GHC == 8.6.5, GHC == 8.4.4, GHC == 8.2.2
+build-type:             Simple
+synopsis:               Simple logging library
+category:               Logging
+extra-source-files:     ChangeLog.md
+                        README.md
 
 source-repository head
   type: git
